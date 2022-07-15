@@ -1,10 +1,22 @@
-import { defaultState } from "..";
+//нужно создать константы с action.type
+const LOAD_POST = 'LOAD_POST'
+const LOAD_POST_SUCCESS = 'LOAD_POST_SUCCESS'
+const LOAD_POST_ERROR = 'LOAD_POST_ERROR'
+
+// import { defaultState } from "..";
+
+
+export const defaultState = {
+    data:[],
+    loading: false,
+    error: null,
+}
 
 
 
-export function reducer(state = defaultState, action) {
+export function postReducer(state = defaultState, action) {
     switch (action.type) {
-        case 'LOAD_POST': {
+        case LOAD_POST: {
             return {
                 ...state,
                 loading: true,
@@ -12,7 +24,7 @@ export function reducer(state = defaultState, action) {
                 data: {}
             };
         }
-        case 'LOAD_POST_SUCCESS': {
+        case LOAD_POST_SUCCESS: {
             return {
                 ...state,
                 loading: false,
@@ -20,7 +32,7 @@ export function reducer(state = defaultState, action) {
                 data: action.payload
             };
         }
-        case 'LOAD_POST_ERROR': {
+        case LOAD_POST_ERROR: {
             return {
                 ...state,
                 loading: false,
@@ -33,3 +45,10 @@ export function reducer(state = defaultState, action) {
             return state;
     }
 }
+
+//export const loadPost = (payload) => ({type: LOAD_POST_SUCCESS, payload})
+
+
+export const loadPost = data => {
+    return {type: LOAD_POST_SUCCESS,payload: data};
+  }

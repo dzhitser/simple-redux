@@ -1,15 +1,13 @@
 import {combineReducers} from 'redux'
 
-import { reducer } from './reducers'
+import {  postReducer } from './reducers'
 
-export const defaultState = {
-    data:{},
-    loading: false,
-    error: null,
-}
+
+
+// export const userPostSelector = state.post
 
 export const rootReducer = combineReducers({
-    reducer
+    post: postReducer
 })
 
 
